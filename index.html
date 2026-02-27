@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SBS 아카데미 오리엔테이션</title>
+    <title>SBS아카데미 수강생 필독 가이드</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
 
     <style>
@@ -23,7 +23,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body { font-family: var(--font-main); background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; }
 
-        .page { display: none; min-height: 100vh; padding: 24px; animation: fadeIn 0.3s ease-out; }
+        .page { display: none; min-height: 100vh; padding: 24px; animation: fadeIn 0.2s ease-out; }
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -53,77 +53,79 @@
         .page-title { font-size: 22px; font-weight: 800; margin-bottom: 20px; }
         .content-box { background: var(--surface); padding: 24px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); margin-bottom: 20px; }
 
-        /* --- [NEW] 자격증 2단 아코디언 스타일 --- */
+        /* --- [자격증 & 준비물 아코디언] 모바일 최적화 --- */
         .main-acc-btn {
-            width: 100%; padding: 20px; background: #fff; border: none; border-radius: 16px;
+            width: 100%; padding: 20px; background: #fff; border: 1px solid #eee; border-radius: 16px;
             display: flex; justify-content: space-between; align-items: center;
             font-size: 17px; font-weight: 800; color: #333; cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eee; margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 10px;
+            -webkit-appearance: none; /* 아이폰 기본 스타일 제거 */
         }
-        .main-acc-btn.active { border-color: var(--accent); color: var(--accent); }
+        .main-acc-btn.active { border-color: var(--accent); color: var(--accent); background-color: #fcfcfc; }
         
-        .main-acc-content { display: none; padding: 10px 0; animation: slideDown 0.3s ease-out; }
+        .main-acc-content { display: none; padding: 10px 0; }
         .main-acc-content.show { display: block; }
 
-        /* 내부 서브 아코디언 */
+        /* 서브 아코디언 */
         .sub-acc-item { margin-bottom: 10px; border: 1px solid #eee; border-radius: 12px; overflow: hidden; background: #f9f9f9; }
         .sub-acc-btn {
             width: 100%; padding: 15px; background: #f9f9f9; border: none;
             display: flex; justify-content: space-between; align-items: center;
             font-size: 15px; font-weight: 700; color: #555; cursor: pointer;
+            -webkit-appearance: none;
         }
         .sub-acc-btn.active { background: #fff; color: #333; border-bottom: 1px solid #eee; }
         .sub-acc-content { display: none; padding: 20px; background: #fff; }
         .sub-acc-content.show { display: block; }
 
         /* 화살표 아이콘 */
-        .acc-icon { font-size: 12px; color: #aaa; transition: transform 0.3s; }
+        .acc-icon { font-size: 12px; color: #aaa; transition: transform 0.2s; }
         .active .acc-icon { transform: rotate(180deg); color: var(--accent); }
 
-        /* ACP/GTQ 스타일 */
-        .cert-header { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
-        .cert-name { font-size: 16px; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
-        .cert-desc { font-size: 13px; color: #666; }
+        /* 자격증 상세 스타일 */
         .subject-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
         .subject-badge { background: #F0F7FF; color: var(--accent); font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 6px; border: 1px solid #D6E4FF; }
         .price-list { border-top: 1px solid #eee; margin-top: 10px; }
         .price-row { display: flex; justify-content: space-between; padding: 10px 5px; border-bottom: 1px solid #eee; font-size: 13px; }
         .price-value { font-weight: 800; color: #333; }
 
-        /* GTQ 박스 */
         .gtq-box { background: #fafafa; border-radius: 10px; padding: 15px; border: 1px solid #eee; margin-bottom: 10px; }
         .gtq-grade { font-size: 14px; font-weight: 800; color: #333; margin-bottom: 5px; display: block; }
         .gtq-detail { font-size: 13px; color: #666; line-height: 1.4; word-break: keep-all; }
+        .gtq-title { font-size: 15px; font-weight: 800; margin-bottom: 10px; color: #333; margin-top: 20px; }
 
         /* 조건 토글 버튼 */
         .cond-btn {
-            background: #333; color: white; border: none; padding: 6px 12px; margin-top: 5px;
-            border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; display: inline-block;
+            background: #333; color: white; border: none; padding: 8px 12px; margin-top: 5px;
+            border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap:5px;
+            -webkit-appearance: none;
         }
         .cond-content { display: none; background: #f5f5f5; padding: 15px; border-radius: 8px; margin-top: 10px; font-size: 13px; color: #444; line-height: 1.6; }
         .cond-content.show { display: block; }
         .cond-list li { margin-bottom: 6px; padding-left: 10px; position: relative; list-style: none; }
         .cond-list li::before { content: '-'; position: absolute; left: 0; color: #888; }
 
-        /* 기존 스타일 (유지) */
-        .link-btn { display: flex; justify-content: center; width: 100%; padding: 16px; background-color: var(--text-primary); color: white; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 14px; margin-top: 10px; }
+        /* 준비물 페이지 스타일 (아코디언 재사용) */
         .acc-container { display: flex; flex-direction: column; gap: 12px; }
         .acc-item { background: var(--surface); border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); overflow: hidden; border: 1px solid #eee; }
-        .acc-btn { width: 100%; padding: 18px 20px; background: #fff; border: none; display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 800; color: #333; cursor: pointer; transition: background 0.2s; }
+        .acc-btn { width: 100%; padding: 18px 20px; background: #fff; border: none; display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 800; color: #333; cursor: pointer; -webkit-appearance: none; }
         .acc-btn:active { background-color: #fafafa; }
         .acc-content { display: none; padding: 20px; background-color: #fafafa; }
         .acc-content.show { display: block; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        
         .material-list { display: flex; flex-direction: column; gap: 8px; }
         .mat-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid #eee; font-size: 14px; }
-        .mat-row:last-child { border-bottom: none; }
         .mat-name { color: #444; font-weight: 500; padding-right: 10px; word-break: keep-all; }
         .mat-price { font-weight: 700; color: var(--accent); white-space: nowrap; }
+        
         .ai-group { margin-bottom: 15px; background: white; padding: 12px; border-radius: 8px; border: 1px solid #eee; }
         .ai-title { font-size: 14px; font-weight: 800; color: #333; margin-bottom: 6px; }
         .ai-tool { font-size: 13px; color: #555; margin-bottom: 4px; display: flex; justify-content: space-between;}
         .currency-note { font-size: 12px; color: #888; margin-top: 10px; background: #eee; padding: 8px; border-radius: 6px; }
         .ext-btn { display: inline-block; background-color: #333; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; text-decoration: none; font-weight: 700; margin-left: 8px; vertical-align: middle; }
+
+        /* 기존 스타일 (유지) */
+        .link-btn { display: flex; justify-content: center; width: 100%; padding: 16px; background-color: var(--text-primary); color: white; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 14px; margin-top: 10px; }
         .schedule-row { padding: 12px 0; border-bottom: 1px solid #F2F4F6; }
         .month-badge { background: #333; color: white; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
         .date-range { font-size: 14px; font-weight: 700; color: #333; letter-spacing: -0.3px; }
@@ -187,14 +189,14 @@
         <div class="sub-header"><button class="back-btn" onclick="goToPage('home')">← HOME</button></div>
         <h2 class="page-title">자격증 안내</h2>
 
-        <button class="main-acc-btn" onclick="toggleAcc(this)">
+        <button type="button" class="main-acc-btn" onclick="toggleID(this, 'design-cert-list')">
             🎨 디자인 자격증 <span class="acc-icon">▼</span>
         </button>
-        <div class="main-acc-content">
+        <div id="design-cert-list" class="main-acc-content">
             
             <div class="sub-acc-item">
-                <button class="sub-acc-btn" onclick="toggleAcc(this)">ACP 자격증 (어도비 국제공인) <span class="acc-icon">▼</span></button>
-                <div class="sub-acc-content">
+                <button type="button" class="sub-acc-btn" onclick="toggleID(this, 'acp-info')">ACP 자격증 (국제공인) <span class="acc-icon">▼</span></button>
+                <div id="acp-info" class="sub-acc-content">
                     <div class="subject-grid">
                         <span class="subject-badge">ACP 포토샵</span><span class="subject-badge">ACP 일러스트</span>
                         <span class="subject-badge">ACP 인디자인</span><span class="subject-badge">ACP 프리미어</span>
@@ -211,8 +213,8 @@
             </div>
 
             <div class="sub-acc-item">
-                <button class="sub-acc-btn" onclick="toggleAcc(this)">GTQ 자격증 (국가공인) <span class="acc-icon">▼</span></button>
-                <div class="sub-acc-content">
+                <button type="button" class="sub-acc-btn" onclick="toggleID(this, 'gtq-info')">GTQ 자격증 (국가공인) <span class="acc-icon">▼</span></button>
+                <div id="gtq-info" class="sub-acc-content">
                     <h3 class="gtq-title" style="margin-top:0;">GTQ 포토샵</h3>
                     <div class="gtq-box"><span class="gtq-grade">1급</span><p class="gtq-detail">고급툴(20) / 사진편집응용(20) / 포스터(25) / 웹페이지(35)</p></div>
                     <div class="gtq-box"><span class="gtq-grade">2급</span><p class="gtq-detail">툴활용(20) / 사진편집기초(20) / 사진편집(25) / 이벤트페이지(35)</p></div>
@@ -223,14 +225,14 @@
             </div>
         </div>
 
-        <button class="main-acc-btn" onclick="toggleAcc(this)">
+        <button type="button" class="main-acc-btn" onclick="toggleID(this, 'interior-cert-list')">
             🏠 인테리어 자격증 <span class="acc-icon">▼</span>
         </button>
-        <div class="main-acc-content">
+        <div id="interior-cert-list" class="main-acc-content">
             
             <div class="sub-acc-item">
-                <button class="sub-acc-btn" onclick="toggleAcc(this)">CAD 자격증 <span class="acc-icon">▼</span></button>
-                <div class="sub-acc-content">
+                <button type="button" class="sub-acc-btn" onclick="toggleID(this, 'cad-info')">CAD 자격증 <span class="acc-icon">▼</span></button>
+                <div id="cad-info" class="sub-acc-content">
                     <ul class="info-list" style="margin-bottom:0;">
                         <li><strong>CAT 1급 / 2급</strong> (CAD 프로그램 사용)</li>
                         <li><strong>전산응용건축제도기능사</strong> (국가기술)</li>
@@ -239,8 +241,8 @@
             </div>
 
             <div class="sub-acc-item">
-                <button class="sub-acc-btn" onclick="toggleAcc(this)">실내건축 자격증 <span class="acc-icon">▼</span></button>
-                <div class="sub-acc-content">
+                <button type="button" class="sub-acc-btn" onclick="toggleID(this, 'interior-info')">실내건축 자격증 <span class="acc-icon">▼</span></button>
+                <div id="interior-info" class="sub-acc-content">
                     <div style="margin-bottom:15px;">
                         <strong style="display:block; margin-bottom:5px;">실내건축기능사</strong>
                         <span style="font-size:13px; color:#555;">응시자격 : 제한 없음 (누구나)</span>
@@ -248,8 +250,8 @@
 
                     <div style="margin-bottom:15px;">
                         <strong style="display:block; margin-bottom:5px;">실내건축산업기사</strong>
-                        <button class="cond-btn" onclick="toggleCondition(this)">응시자격 확인 ▼</button>
-                        <div class="cond-content">
+                        <button type="button" class="cond-btn" onclick="toggleID(this, 'cond-sanup')">응시자격 확인 ▼</button>
+                        <div id="cond-sanup" class="cond-content">
                             <ul class="cond-list">
                                 <li>기능사 취득 후 실무 1년 이상</li>
                                 <li>동일/유사 분야 산업기사 이상</li>
@@ -261,8 +263,8 @@
 
                     <div>
                         <strong style="display:block; margin-bottom:5px;">실내건축기사</strong>
-                        <button class="cond-btn" onclick="toggleCondition(this)">응시자격 확인 ▼</button>
-                        <div class="cond-content">
+                        <button type="button" class="cond-btn" onclick="toggleID(this, 'cond-gisa')">응시자격 확인 ▼</button>
+                        <div id="cond-gisa" class="cond-content">
                             <ul class="cond-list">
                                 <li>산업기사 취득 후 실무 1년 이상</li>
                                 <li>기능사 취득 후 실무 3년 이상</li>
@@ -274,15 +276,44 @@
                 </div>
             </div>
         </div>
-
     </div>
 
+
+    <div id="page-materials" class="page">
+        <div class="sub-header"><button class="back-btn" onclick="goToPage('home')">← HOME</button></div>
+        <h2 class="page-title">과정별 준비물 안내</h2>
+        <div class="acc-container">
+            <div class="acc-item">
+                <button type="button" class="acc-btn" onclick="toggleID(this, 'mat-mentor')">📚 멘토시리즈 교재 <span class="acc-icon">▼</span></button>
+                <div id="mat-mentor" class="acc-content">
+                    <div class="material-list"><div class="mat-row"><span class="mat-name">발상과 표현</span><span class="mat-price">18,000원</span></div><div class="mat-row"><span class="mat-name">색채학 / 해부학</span><span class="mat-price">각 21,000원</span></div><div class="mat-row"><span class="mat-name">포토샵+AI / 일러스트+AI</span><span class="mat-price">각 28,000원</span></div><div class="mat-row"><span class="mat-name">포토웍스</span><span class="mat-price">25,000원</span></div><div class="mat-row"><span class="mat-name">디일러</span><span class="mat-price">26,000원</span></div><div class="mat-row"><span class="mat-name">인디자인</span><span class="mat-price">27,000원</span></div><div class="mat-row"><span class="mat-name">C언어</span><span class="mat-price">24,000원</span></div><div class="mat-row"><span class="mat-name">자바</span><span class="mat-price">32,000원</span></div><div class="mat-row"><span class="mat-name">파이썬</span><span class="mat-price">27,000원</span></div><div class="mat-row"><span class="mat-name">웹HTML5+CSS3</span><span class="mat-price">29,000원</span></div><div class="mat-row"><span class="mat-name">애프터 이펙트CC</span><span class="mat-price">33,000원</span></div><div class="mat-row"><span class="mat-name">3d Max / 스케치업</span><span class="mat-price">각 28,000원</span></div><div class="mat-row"><span class="mat-name">오토캐드</span><span class="mat-price">33,000원</span></div></div>
+                </div>
+            </div>
+            <div class="acc-item">
+                <button type="button" class="acc-btn" onclick="toggleID(this, 'mat-cert')">🏆 자격증 과정 <span class="acc-icon">▼</span></button>
+                <div id="mat-cert" class="acc-content">
+                    <div class="material-list"><div class="mat-row"><span class="mat-name">전산세무 1급 (Perfect)</span><span class="mat-price">38,000원</span></div><div class="mat-row"><span class="mat-name">전산세무 2급 (Perfect)</span><span class="mat-price">29,000원</span></div><div class="mat-row"><span class="mat-name">전산회계 1급 (Perfect)</span><span class="mat-price">27,000원</span></div><div class="mat-row"><span class="mat-name">컴활1급 실기 (멘토시리즈)</span><span class="mat-price">35,000원</span></div><div class="mat-row"><span class="mat-name">MOS 마스터</span><span class="mat-price">56,000원</span></div><div class="mat-row"><span class="mat-name">엑셀실무 (2026 시나공)</span><span class="mat-price">24,300원</span></div><div class="mat-row"><span class="mat-name">컬러리스트 기사/산업기사</span><span class="mat-price">36,000원</span></div><div class="mat-row" style="display:block;padding-top:10px;background:#f5f5f5;border-radius:8px;padding:10px"><span class="mat-name" style="font-weight:700;color:#333">[컬러리스트 준비물]</span><br><span style="font-size:12px;color:#666;line-height:1.4;display:block;margin-top:4px">포스터칼라 12색(40ml), 화홍 948 수채화붓(5호 6개), 종이파렛트, 8절 스케치북, 물통, 커팅매트, 30cm 방안직자, KS표준색 가이드(155b/195), 양면테이프, 티캔들&홀더</span></div></div>
+                </div>
+            </div>
+            <div class="acc-item">
+                <button type="button" class="acc-btn" onclick="toggleID(this, 'mat-ai')">🤖 AI 과정 (툴 구독료) <span class="acc-icon">▼</span></button>
+                <div id="mat-ai" class="acc-content">
+                    <div class="ai-group"><div class="ai-title">AI 프롬프트 엔지니어링</div><div class="ai-tool"><span>Chat GPT(Plus)</span><span>$20 (약 2.9만)</span></div><div class="ai-tool"><span>Midjourney(Standard)</span><span>$30 (약 3.4만)</span></div><div class="ai-tool"><span>Google AI Pro</span><span>$20 (약 2.9만)</span></div><div class="ai-tool"><span>Dreamina</span><span>무료</span></div></div><div class="ai-group"><div class="ai-title">AI 크리에이터 모션 / 유튜브</div><div class="ai-tool"><span>Chat GPT(Plus)</span><span>$20</span></div><div class="ai-tool"><span>Midjourney(Standard)</span><span>$30</span></div><div class="ai-tool"><span>Google AI Pro</span><span>$20</span></div></div><div class="ai-group"><div class="ai-title">AI 크리에이터 시각편집</div><div class="ai-tool"><span>Chat GPT / Midjourney</span><span>$20 / $30</span></div><div class="ai-tool"><span>Dreamina / Krea Ai</span><span>무료</span></div></div><div class="ai-group"><div class="ai-title">AI 크리에이터 웹 / 아트웍</div><div class="ai-tool"><span>Claude(Pro)</span><span>$22 (약 3.2만)</span></div><div class="ai-tool"><span>Rundiffusion(Pro)</span><span>$30 (약 4.4만)</span></div></div><div class="currency-note">※ AI 툴은 달러 결제로 환율에 따라 금액 변동이 있을 수 있습니다.</div>
+                </div>
+            </div>
+            <div class="acc-item">
+                <button type="button" class="acc-btn" onclick="toggleID(this, 'mat-art')">🎨 인테리어 / 아트웍 <span class="acc-icon">▼</span></button>
+                <div id="mat-art" class="acc-content">
+                    <div style="text-align:right;margin-bottom:10px"><a href="https://www.homi.co.kr/" target="_blank" class="ext-btn" style="background:#333;color:white;padding:5px 10px;border-radius:4px;text-decoration:none;font-size:12px">호미화방 바로가기 ↗</a></div><div class="info-list"><li style="margin-top:10px"><strong>인테리어 스케치</strong><br><span class="info-sub">스케치북 B4(105g 스프링), 미술용 연필(4B,2B,HB), 톰보 지우개, 커터칼<br>교재: 스마트 실내건축기능사 (28,800원)</span></li><li><strong>기초아트웍 1 (발상과표현)</strong><br><span class="info-sub">교재(18,000원), 연필 5자루(4B), 8절 스케치북, 톰보 지우개</span></li><li><strong>기초아트웍 2 (색채학)</strong><br><span class="info-sub">교재(21,000원)</span></li><li><strong>드로잉 아트웍</strong><br><span class="info-sub">8절 스케치북(크로키북X), 30cm자, 연필(2B), 톰보 지우개</span></li><li><strong>디테일 아트웍 (해부학)</strong><br><span class="info-sub">교재(21,000원), 연필(4B/샤프), 스케치북, 지우개</span></li><li><strong>디테일 아트웍 (조소)</strong><br><span class="info-sub">포비월드 프레임용 철사 2.5(8M), 에폭시퍼티(타미야), 메이커박스</span></li></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="page-book" class="page"><div class="sub-header"><button class="back-btn" onclick="goToPage('home')">← HOME</button></div><h2 class="page-title">교재 구매 가이드</h2><div class="content-box"><p style="font-size:14px;color:#333;margin-bottom:10px">아래 사이트에서 과정별 교재를 확인하세요.</p><a href="https://kedustore.com/" target="_blank" class="link-btn">교재 사이트 바로가기 ↗</a></div><div class="content-box"><h3 style="font-size:15px;font-weight:700;margin-bottom:15px">📌 필수 입력 정보</h3><ul class="form-info"><li><span class="form-label">학원명</span><span class="form-value">SBS아카데미컴퓨터아트학원</span></li><li><span class="form-label">지점명</span><span class="form-value" style="color:#0066FF">홍대지점</span></li><li><span class="form-label">수강생 이름</span><span class="form-value">본인 성함</span></li><li><span class="form-label">연락처</span><span class="form-value">본인 연락처</span></li></ul></div></div>
     <div id="page-online" class="page"><div class="sub-header"><button class="back-btn" onclick="goToPage('home')">← HOME</button></div><h2 class="page-title">ZOOM 접속 안내</h2><div class="content-box"><h3 style="font-size:16px;font-weight:700;margin-bottom:10px">🚨 수업 유의사항</h3><ul class="notice-list"><li>반드시 <strong style="color:#d32f2f">'본인 성명'</strong>으로 접속해 주세요.</li><li>출석 체크는 수업 시작/종료 시 진행됩니다.</li><li>수업 진행 중 피드백은 <strong>채팅</strong>으로 이루어 집니다.</li></ul><a href="https://zoom.us/join" target="_blank" class="link-btn" style="background-color:#2D8CFF">ZOOM 접속하기 (회의 참가) ↗</a></div><div class="content-box" style="padding:20px 10px"><h3 style="font-size:16px;font-weight:700;margin-bottom:15px">📂 강의장별 ID / 비번</h3><div class="zoom-grid"><div class="zoom-box"><span class="zoom-header">A</span><div><span class="zoom-val">201 312 9660</span></div><div class="pw-text">123401</div></div><div class="zoom-box"><span class="zoom-header">B</span><div><span class="zoom-val">202 312 9660</span></div><div class="pw-text">123402</div></div><div class="zoom-box"><span class="zoom-header">C</span><div><span class="zoom-val">203 312 9660</span></div><div class="pw-text">123403</div></div><div class="zoom-box"><span class="zoom-header">D</span><div><span class="zoom-val">204 312 9660</span></div><div class="pw-text">123404</div></div><div class="zoom-box"><span class="zoom-header">E</span><div><span class="zoom-val">205 312 9660</span></div><div class="pw-text">123405</div></div><div class="zoom-box"><span class="zoom-header">F</span><div><span class="zoom-val">206 312 9660</span></div><div class="pw-text">123406</div></div><div class="zoom-box"><span class="zoom-header">G</span><div><span class="zoom-val">207 312 9660</span></div><div class="pw-text">123407</div></div><div class="zoom-box"><span class="zoom-header">H</span><div><span class="zoom-val">208 312 9660</span></div><div class="pw-text">123408</div></div><div class="zoom-box"><span class="zoom-header">I</span><div><span class="zoom-val">209 312 9660</span></div><div class="pw-text">123409</div></div><div class="zoom-box"><span class="zoom-header">J</span><div><span class="zoom-val">210 312 9660</span></div><div class="pw-text">123410</div></div><div class="zoom-box"><span class="zoom-header">K</span><div><span class="zoom-val">211 312 9660</span></div><div class="pw-text">123411</div></div><div class="zoom-box"><span class="zoom-header">L</span><div><span class="zoom-val">212 312 9660</span></div><div class="pw-text">123412</div></div><div class="zoom-box"><span class="zoom-header">M</span><div><span class="zoom-val">213 312 9660</span></div><div class="pw-text">123413</div></div><div class="zoom-box"><span class="zoom-header">N</span><div><span class="zoom-val">214 312 9660</span></div><div class="pw-text">123414</div></div><div class="zoom-box"><span class="zoom-header">O</span><div><span class="zoom-val">215 312 9660</span></div><div class="pw-text">123415</div></div><div class="zoom-box"><span class="zoom-header">P</span><div><span class="zoom-val">216 312 9660</span></div><div class="pw-text">123416</div></div><div class="zoom-box"><span class="zoom-header">Q</span><div><span class="zoom-val">217 312 9660</span></div><div class="pw-text">123417</div></div><div class="zoom-box"><span class="zoom-header">R</span><div><span class="zoom-val">218 312 9660</span></div><div class="pw-text">123418</div></div><div class="zoom-box"><span class="zoom-header">S</span><div><span class="zoom-val">219 312 9660</span></div><div class="pw-text">123419</div></div></div></div></div>
     <div id="page-app" class="page"><div class="sub-header"><button class="back-btn" onclick="goToPage('home')">← HOME</button></div><h2 class="page-title">학원 어플 사용법</h2><div class="content-box"><h3 style="font-size:16px;font-weight:700;margin-bottom:20px">📱 설치 및 로그인 가이드</h3><div class="step-list"><div class="step-item"><div class="step-title">어플 다운로드</div><div class="step-desc">구글플레이 / 앱스토어 접속 후<br><strong>'코리아교육그룹'</strong> 어플 다운로드</div><div class="store-btns"><a href="https://play.google.com/store/apps/details?id=com.kreaedu.android.ked" target="_blank" class="store-btn" style="background-color:#00C853">구글플레이 다운 ↗</a><a href="https://apps.apple.com/kr/app/%EC%BD%94%EB%A6%AC%EC%95%84%EA%B5%90%EC%9C%A1%EA%B7%B8%EB%A3%B9-%EC%8A%A4%EB%A7%88%ED%8A%B8%EB%9F%AC%EB%8B%9D/id1489265851" target="_blank" class="store-btn" style="background-color:#007AFF">앱스토어 다운 ↗</a></div></div><div class="step-item"><div class="step-title">지점 선택</div><div class="step-desc">설치 후 <strong>'홍대지점'</strong> 선택</div></div><div class="step-item"><div class="step-title">로그인 정보</div><div class="step-desc"><ul class="form-info" style="margin-top:10px"><li><span class="form-label">아이디</span><span class="form-value">수강생 본인 연락처</span></li><li><span class="form-label">비밀번호</span><span class="form-value">연락처 뒷번호 4자리</span></li></ul></div></div></div></div><div class="content-box"><h3 style="font-size:16px;font-weight:700;margin-bottom:15px">📅 수업 체크 및 변경</h3><p style="font-size:14px;color:#555;line-height:1.6;margin-bottom:15px">어플을 통해 배정된 수업 일정을 확인하세요.<br>일정 변동 및 변경 요청이 필요하실 때는 <strong>담당 멘토님에게 직접 연락</strong>해 주세요.</p><div class="alert-box"><div class="alert-title">📢 필독! 문의 관련 주의사항</div><p class="alert-desc">어플 내 <strong>'1:1 멘토문의'</strong> 기능은 확인 및 처리가 매우 늦어질 수 있습니다.<br><br>빠른 처리를 위해 <strong>담당 멘토에게 직접(전화/카톡)</strong> 문의해 주세요.</p></div></div></div>
     <div id="page-calendar" class="page"><div class="sub-header"><button class="back-btn" onclick="goToPage('home')">← HOME</button></div><h2 class="page-title">2026년 학사일정 안내</h2><div class="info-notice"><div class="info-title">📢 수업 이용 안내</div><ul class="info-list"><li>예정되지 않은 휴강/보강은 강사님이 수업 때 공지합니다.</li><li><strong>평일 빨간날(공휴일)은 휴강</strong>입니다.</li><li>개강 5일 전 <strong>개강문자(시간/강의장)</strong>를 확인해 주세요.<br><span class="info-sub">- 일정 변동 시 개강 3일 전까지 멘토에게 연락 요망</span></li><li>개강 첫날 자리가 본인 자리가 될 수 있으니 <strong>10~20분 일찍</strong> 오시면 좋습니다.</li><li>수업 중 질문: 실습 시간에 손들고 질문<br><span class="info-sub">(비대면 수업 시 채팅창으로 질문)</span></li></ul></div><div class="content-box"><h3 style="font-size:16px;margin-bottom:15px;font-weight:700">📅 2026 수강기간</h3><div><div class="schedule-row"><span class="month-badge">01월</span><span class="date-range">01.07 (수요일) ~ 01.28 (수요일)</span></div><div class="schedule-row"><span class="month-badge">02월</span><span class="date-range">02.02 (월요일) ~ 02.27 (금요일)</span></div><div class="schedule-row"><span class="month-badge">03월</span><span class="date-range">03.16 (월요일) ~ 04.10 (금요일)</span></div><div class="schedule-row"><span class="month-badge">04월</span><span class="date-range">04.13 (월요일) ~ 05.12 (화요일)</span></div><div class="schedule-row"><span class="month-badge">05월</span><span class="date-range">05.13 (수요일) ~ 06.10 (수요일)</span></div><div class="schedule-row"><span class="month-badge">06월</span><span class="date-range">06.11 (목요일) ~ 07.08 (수요일)</span></div><div class="schedule-row"><span class="month-badge">07월</span><span class="date-range">07.14 (화요일) ~ 08.10 (월요일)</span></div><div class="schedule-row"><span class="month-badge">08월</span><span class="date-range">08.12 (수요일) ~ 09.09 (수요일)</span></div><div class="schedule-row"><span class="month-badge">09월</span><span class="date-range">09.14 (월요일) ~ 10.15 (목요일)</span></div><div class="schedule-row"><span class="month-badge">10월</span><span class="date-range">10.19 (월요일) ~ 11.13 (금요일)</span></div><div class="schedule-row"><span class="month-badge">11월</span><span class="date-range">11.17 (화요일) ~ 12.14 (월요일)</span></div><div class="schedule-row"><span class="month-badge">12월</span><span class="date-range">12.15 (화요일) ~ 27.01.13 (수요일)</span></div></div></div><div class="content-box"><h3 style="font-size:16px;margin-bottom:15px;font-weight:700;color:var(--danger)">⛔ 수업 없음 (공휴일/휴강)</h3><div class="holiday-list-v2"><div class="holiday-row"><span class="h-date">02.16 - 18</span><span class="h-name">설날 연휴</span></div><div class="holiday-row"><span class="h-date">03.02</span><span class="h-name">대체휴일(삼일절)</span></div><div class="holiday-row"><span class="h-date">05.01</span><span class="h-name">근로자의 날</span></div><div class="holiday-row"><span class="h-date">05.05</span><span class="h-name">어린이날</span></div><div class="holiday-row"><span class="h-date">05.25</span><span class="h-name">대체휴일(석탄일)</span></div><div class="holiday-row"><span class="h-date">06.06</span><span class="h-name">현충일</span></div><div class="holiday-row"><span class="h-date">08.17</span><span class="h-name">대체휴일(광복절)</span></div><div class="holiday-row"><span class="h-date">09.24 - 26</span><span class="h-name">추석 연휴</span></div><div class="holiday-row"><span class="h-date">10.05</span><span class="h-name">대체휴일(개천절)</span></div><div class="holiday-row"><span class="h-date">10.09</span><span class="h-name">한글날</span></div><div class="holiday-row"><span class="h-date">12.25</span><span class="h-name">성탄절</span></div><div class="holiday-row"><span class="h-date">27.01.01</span><span class="h-name">신정</span></div></div></div></div>
-    <div id="page-materials" class="page"><div class="sub-header"><button class="back-btn" onclick="goToPage('home')">← HOME</button></div><h2 class="page-title">과정별 준비물 안내</h2><div class="acc-container"><div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">📚 멘토시리즈 교재 <span class="acc-icon">▼</span></button><div class="acc-content"><div class="material-list"><div class="mat-row"><span class="mat-name">발상과 표현</span><span class="mat-price">18,000원</span></div><div class="mat-row"><span class="mat-name">색채학 / 해부학</span><span class="mat-price">각 21,000원</span></div><div class="mat-row"><span class="mat-name">포토샵+AI / 일러스트+AI</span><span class="mat-price">각 28,000원</span></div><div class="mat-row"><span class="mat-name">포토웍스</span><span class="mat-price">25,000원</span></div><div class="mat-row"><span class="mat-name">디일러</span><span class="mat-price">26,000원</span></div><div class="mat-row"><span class="mat-name">인디자인</span><span class="mat-price">27,000원</span></div><div class="mat-row"><span class="mat-name">C언어</span><span class="mat-price">24,000원</span></div><div class="mat-row"><span class="mat-name">자바</span><span class="mat-price">32,000원</span></div><div class="mat-row"><span class="mat-name">파이썬</span><span class="mat-price">27,000원</span></div><div class="mat-row"><span class="mat-name">웹HTML5+CSS3</span><span class="mat-price">29,000원</span></div><div class="mat-row"><span class="mat-name">애프터 이펙트CC</span><span class="mat-price">33,000원</span></div><div class="mat-row"><span class="mat-name">3d Max / 스케치업</span><span class="mat-price">각 28,000원</span></div><div class="mat-row"><span class="mat-name">오토캐드</span><span class="mat-price">33,000원</span></div></div></div></div><div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">🏆 자격증 과정 <span class="acc-icon">▼</span></button><div class="acc-content"><div class="material-list"><div class="mat-row"><span class="mat-name">전산세무 1급 (Perfect)</span><span class="mat-price">38,000원</span></div><div class="mat-row"><span class="mat-name">전산세무 2급 (Perfect)</span><span class="mat-price">29,000원</span></div><div class="mat-row"><span class="mat-name">전산회계 1급 (Perfect)</span><span class="mat-price">27,000원</span></div><div class="mat-row"><span class="mat-name">컴활1급 실기 (멘토시리즈)</span><span class="mat-price">35,000원</span></div><div class="mat-row"><span class="mat-name">MOS 마스터</span><span class="mat-price">56,000원</span></div><div class="mat-row"><span class="mat-name">엑셀실무 (2026 시나공)</span><span class="mat-price">24,300원</span></div><div class="mat-row"><span class="mat-name">컬러리스트 기사/산업기사</span><span class="mat-price">36,000원</span></div><div class="mat-row" style="display:block;padding-top:10px;background:#f5f5f5;border-radius:8px;padding:10px"><span class="mat-name" style="font-weight:700;color:#333">[컬러리스트 준비물]</span><br><span style="font-size:12px;color:#666;line-height:1.4;display:block;margin-top:4px">포스터칼라 12색(40ml), 화홍 948 수채화붓(5호 6개), 종이파렛트, 8절 스케치북, 물통, 커팅매트, 30cm 방안직자, KS표준색 가이드(155b/195), 양면테이프, 티캔들&홀더</span></div></div></div></div><div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">🤖 AI 과정 (툴 구독료) <span class="acc-icon">▼</span></button><div class="acc-content"><div class="ai-group"><div class="ai-title">AI 프롬프트 엔지니어링</div><div class="ai-tool"><span>Chat GPT(Plus)</span><span>$20 (약 2.9만)</span></div><div class="ai-tool"><span>Midjourney(Standard)</span><span>$30 (약 3.4만)</span></div><div class="ai-tool"><span>Google AI Pro</span><span>$20 (약 2.9만)</span></div><div class="ai-tool"><span>Dreamina</span><span>무료</span></div></div><div class="ai-group"><div class="ai-title">AI 크리에이터 모션 / 유튜브</div><div class="ai-tool"><span>Chat GPT(Plus)</span><span>$20</span></div><div class="ai-tool"><span>Midjourney(Standard)</span><span>$30</span></div><div class="ai-tool"><span>Google AI Pro</span><span>$20</span></div></div><div class="ai-group"><div class="ai-title">AI 크리에이터 시각편집</div><div class="ai-tool"><span>Chat GPT / Midjourney</span><span>$20 / $30</span></div><div class="ai-tool"><span>Dreamina / Krea Ai</span><span>무료</span></div></div><div class="ai-group"><div class="ai-title">AI 크리에이터 웹 / 아트웍</div><div class="ai-tool"><span>Claude(Pro)</span><span>$22 (약 3.2만)</span></div><div class="ai-tool"><span>Rundiffusion(Pro)</span><span>$30 (약 4.4만)</span></div></div><div class="currency-note">※ AI 툴은 달러 결제로 환율에 따라 금액 변동이 있을 수 있습니다.</div></div></div><div class="acc-item"><button class="acc-btn" onclick="toggleAcc(this)">🎨 인테리어 / 아트웍 <span class="acc-icon">▼</span></button><div class="acc-content"><div style="text-align:right;margin-bottom:10px"><a href="https://www.homi.co.kr/" target="_blank" class="ext-btn" style="background:#333;color:white;padding:5px 10px;border-radius:4px;text-decoration:none;font-size:12px">호미화방 바로가기 ↗</a></div><div class="info-list"><li style="margin-top:10px"><strong>인테리어 스케치</strong><br><span class="info-sub">스케치북 B4(105g 스프링), 미술용 연필(4B,2B,HB), 톰보 지우개, 커터칼<br>교재: 스마트 실내건축기능사 (28,800원)</span></li><li><strong>기초아트웍 1 (발상과표현)</strong><br><span class="info-sub">교재(18,000원), 연필 5자루(4B), 8절 스케치북, 톰보 지우개</span></li><li><strong>기초아트웍 2 (색채학)</strong><br><span class="info-sub">교재(21,000원)</span></li><li><strong>드로잉 아트웍</strong><br><span class="info-sub">8절 스케치북(크로키북X), 30cm자, 연필(2B), 톰보 지우개</span></li><li><strong>디테일 아트웍 (해부학)</strong><br><span class="info-sub">교재(21,000원), 연필(4B/샤프), 스케치북, 지우개</span></li><li><strong>디테일 아트웍 (조소)</strong><br><span class="info-sub">포비월드 프레임용 철사 2.5(8M), 에폭시퍼티(타미야), 메이커박스</span></li></div></div></div></div></div>
 
     <script>
         function goToPage(pageId) {
@@ -290,15 +321,19 @@
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0, 0);
         }
-        function toggleAcc(btn) {
+
+        // [핵심] ID 기반 토글 함수 (모바일 터치 완벽 대응)
+        function toggleID(btn, targetId) {
+            var content = document.getElementById(targetId);
             btn.classList.toggle('active');
-            var panel = btn.nextElementSibling;
-            panel.classList.toggle('show');
-        }
-        function toggleCondition(btn) {
-            var panel = btn.nextElementSibling;
-            panel.classList.toggle('show');
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
         }
     </script>
 </body>
 </html>
+
+```
